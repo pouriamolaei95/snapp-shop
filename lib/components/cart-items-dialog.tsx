@@ -85,29 +85,31 @@ export default function CartItemsDialog() {
       >
         <div className="flex flex-col h-full">
           {cartItemsWithDetails.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-6 text-center">
+            <section className="flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-6 text-center">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center mb-4 md:mb-6 shadow-inner">
                 <ShoppingCartIcon
                   size={40}
                   className="md:w-12 md:h-12 text-gray-400"
                 />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
+              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
                 {CONTENT.CART_EMPTY}
-              </h3>
+              </h2>
               <p className="text-gray-500 text-sm md:text-base max-w-md px-4">
                 {CONTENT.CART_EMPTY_DESCRIPTION}
               </p>
-            </div>
+            </section>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto p-3 md:p-6 space-y-3 md:space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              <ul className="flex-1 overflow-y-auto p-3 md:p-6 space-y-3 md:space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 list-none">
                 {cartItemsWithDetails.map((item) => (
-                  <CartItem key={item.id} {...item} />
+                  <li key={item.id}>
+                    <CartItem {...item} />
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              <div className="border-t-2 border-gray-200 p-4 md:p-6 bg-linear-to-br from-gray-50 to-white space-y-4 md:space-y-5 shadow-inner shrink-0">
+              <footer className="border-t-2 border-gray-200 p-4 md:p-6 bg-linear-to-br from-gray-50 to-white space-y-4 md:space-y-5 shadow-inner shrink-0">
                 <div className="flex items-center justify-between p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-gray-200">
                   <span className="font-semibold text-gray-700 text-base md:text-lg">
                     {CONTENT.TOTAL}
@@ -116,7 +118,10 @@ export default function CartItemsDialog() {
                     {formatPrice(totalPrice)}
                   </span>
                 </div>
-                <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+                <nav
+                  className="flex flex-col md:flex-row gap-2 md:gap-3"
+                  aria-label={CONTENT.CART_ACTIONS}
+                >
                   <Button
                     variant="primary"
                     className="md:flex-1 h-12 md:h-14 text-sm md:text-base font-semibold shadow-lg order-2 md:order-1"
@@ -134,8 +139,8 @@ export default function CartItemsDialog() {
                       {CONTENT.CLEAR_CART}
                     </span>
                   </Button>
-                </div>
-              </div>
+                </nav>
+              </footer>
             </>
           )}
         </div>

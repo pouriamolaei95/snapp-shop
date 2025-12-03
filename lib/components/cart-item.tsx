@@ -17,24 +17,24 @@ export default function CartItem({
   const count = useCartStore((state) => state.getItemCount(id));
 
   return (
-    <div className="flex gap-3 md:gap-4 p-3 md:p-5 rounded-lg md:rounded-xl border border-gray-200 bg-white hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
-      <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-lg md:rounded-xl overflow-hidden border-2 border-gray-200 shrink-0 bg-linear-to-br from-gray-50 to-gray-100 transition-colors duration-300">
+    <article className="flex gap-3 md:gap-4 p-3 md:p-5 rounded-lg md:rounded-xl border border-gray-200 bg-white hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
+      <figure className="relative w-16 h-16 md:w-24 md:h-24 rounded-lg md:rounded-xl overflow-hidden border-2 border-gray-200 shrink-0 bg-linear-to-br from-gray-50 to-gray-100 transition-colors duration-300">
         <Image
           src={imageUrl}
           alt={name}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-110"
         />
-      </div>
-      <div className="flex-1 flex flex-col gap-2 md:gap-3 min-w-0">
-        <div>
+      </figure>
+      <section className="flex-1 flex flex-col gap-2 md:gap-3 min-w-0">
+        <header>
           <h3 className="font-semibold text-gray-900 truncate text-sm md:text-base mb-0.5 md:mb-1">
             {name}
           </h3>
           <p className="text-xs md:text-sm text-gray-500 line-clamp-2 leading-relaxed">
             {description}
           </p>
-        </div>
+        </header>
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-gray-100 gap-2">
           <div className="flex flex-col gap-0.5 md:gap-1 min-w-0">
             <span className="text-[10px] md:text-xs text-gray-500">
@@ -54,7 +54,7 @@ export default function CartItem({
             {formatPrice(price * count)}
           </span>
         </div>
-      </div>
-    </div>
+      </section>
+    </article>
   );
 }

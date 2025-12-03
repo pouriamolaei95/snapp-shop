@@ -21,4 +21,5 @@ export const CONTENT = {
   UNIT_PRICE: "قیمت واحد:",
   APP_TITLE: "اسنپ شاپ",
   APP_DESCRIPTION: "فروشگاه اینترنتی اسنپ شاپ",
+  CART_ACTIONS: "عملیات سبد خرید",
 };

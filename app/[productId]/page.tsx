@@ -24,8 +24,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const { name, description, price, imageUrl } = product;
 
   return (
-    <div className="flex max-md:flex-col gap-8 md:gap-12 py-4">
-      <div className="flex justify-center items-center relative w-full h-72 md:h-[500px] md:w-[500px] rounded-2xl overflow-hidden border-2 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 shadow-lg group">
+    <article className="flex max-md:flex-col gap-8 md:gap-12 py-4">
+      <figure className="flex justify-center items-center relative w-full h-72 md:h-[500px] md:w-[500px] rounded-2xl overflow-hidden border-2 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 shadow-lg group">
         <Image
           alt={name}
           src={imageUrl}
@@ -34,7 +34,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           fill
           sizes="(max-width: 768px) 100vw, 500px"
         />
-      </div>
+      </figure>
       <div className="flex flex-col justify-between gap-8 flex-1">
         <header className="flex flex-col gap-6">
           <div>
@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </p>
           </div>
         </header>
-        <div className="flex flex-col gap-6 p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-sm">
+        <section className="flex flex-col gap-6 p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-sm">
           <div className="flex items-center justify-between">
             <span className="text-gray-600 text-lg">{CONTENT.PRICE}</span>
             <p className="text-primary font-bold text-3xl">
@@ -54,9 +54,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </p>
           </div>
           <AddToCartButton productId={productId} />
-        </div>
+        </section>
       </div>
-    </div>
+    </article>
   );
 }
 
