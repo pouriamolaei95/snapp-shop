@@ -14,6 +14,7 @@ export default function CartItem({
   price,
   imageUrl,
 }: Product) {
+  const product: Product = { id, name, description, price, imageUrl };
   const count = useCartStore((state) => state.getItemCount(id));
 
   return (
@@ -44,7 +45,7 @@ export default function CartItem({
               {formatPrice(price)}
             </p>
           </div>
-          <CartItemCountModifier productId={id} />
+          <CartItemCountModifier product={product} />
         </div>
         <div className="flex items-center justify-between pt-2 md:pt-3 border-t border-gray-200 bg-gray-50 -mx-1 md:-mx-2 px-2 md:px-2 rounded-md">
           <span className="text-xs md:text-sm font-medium text-gray-700">

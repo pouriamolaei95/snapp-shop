@@ -3,18 +3,19 @@ import { Button } from "./ui";
 import { useCartStore } from "../store";
 import { CONTENT } from "../const/content.const";
 import { cn } from "../util/cn.util";
+import type { Product } from "../api/products.api";
 
 type CartItemCountModifierProps = {
-  productId: string;
+  product: Product;
   className?: string;
 };
 
 export default function CartItemCountModifier({
-  productId,
+  product,
   className,
 }: CartItemCountModifierProps) {
   const cartStore = useCartStore();
-  const count = cartStore.getItemCount(productId);
+  const count = cartStore.getItemCount(product.id);
 
   return (
     <div
@@ -25,7 +26,7 @@ export default function CartItemCountModifier({
     >
       <Button
         variant="icon"
-        onClick={() => cartStore.addItem(productId)}
+        onClick={() => cartStore.addItem(product)}
         className="h-7 w-7 md:h-8 md:w-8 p-0 hover:bg-primary/20 hover:text-primary"
         aria-label={CONTENT.INCREASE_QUANTITY}
       >
@@ -36,7 +37,7 @@ export default function CartItemCountModifier({
       </span>
       <Button
         variant="icon"
-        onClick={() => cartStore.removeItem(productId)}
+        onClick={() => cartStore.removeItem(product.id)}
         className="h-7 w-7 md:h-8 md:w-8 p-0 hover:bg-red-50 hover:text-red-600"
         aria-label={CONTENT.DECREASE_QUANTITY}
       >

@@ -27,7 +27,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
     <div className="flex items-center gap-4 w-full">
       {count > 0 && (
         <CartItemCountModifier
-          productId={product.id}
+          product={product}
           className="h-14 border border-gray-200 rounded-md p-2"
         />
       )}
