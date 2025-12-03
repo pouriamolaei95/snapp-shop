@@ -58,7 +58,6 @@ export function Dialog({
                   variant="icon"
                   onClick={onClose}
                   aria-label={CONTENT.CLOSE}
-                  className="md:ml-auto"
                 >
                   <XIcon size={20} />
                 </Button>

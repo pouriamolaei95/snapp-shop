@@ -18,7 +18,7 @@ export default function CartItem({
 
   return (
     <div className="flex gap-3 md:gap-4 p-3 md:p-5 rounded-lg md:rounded-xl border border-gray-200 bg-white hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
-      <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-lg md:rounded-xl overflow-hidden border-2 border-gray-200 shrink-0 bg-linear-to-br from-gray-50 to-gray-100 group-hover:border-primary/30 transition-colors duration-300">
+      <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-lg md:rounded-xl overflow-hidden border-2 border-gray-200 shrink-0 bg-linear-to-br from-gray-50 to-gray-100 transition-colors duration-300">
         <Image
           src={imageUrl}
           alt={name}
