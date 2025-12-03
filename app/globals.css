@@ -45,7 +45,7 @@ body {
 }
 
 .main-container {
-  @apply container mx-auto px-6;
+  @apply container mx-auto px-6 min-w-[320px];
 }
 
 @layer components {

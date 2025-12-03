@@ -1,17 +1,19 @@
 import { apiInstance } from "./";
 
-export async function getProducts() {
+export async function getProducts(): Promise<Product[]> {
   try {
     return await apiInstance.get("products").json<Product[]>();
   } catch (error) {
+    console.error("Failed to fetch products:", error);
     return [];
   }
 }
 
-export async function getProduct(id: string) {
+export async function getProduct(id: string): Promise<Product | null> {
   try {
     return await apiInstance.get(`products/${id}`).json<Product>();
   } catch (error) {
+    console.error(`Failed to fetch product ${id}:`, error);
     return null;
   }
 }

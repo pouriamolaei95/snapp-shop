@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Trash2Icon, ShoppingCartIcon } from "lucide-react";
+import { Trash2Icon, ShoppingCartIcon, AlertCircle } from "lucide-react";
 import { CONTENT } from "../const/content.const";
 import { Badge, Button, Dialog } from "./ui";
 import { useCartStore } from "../store";
@@ -34,11 +34,20 @@ export default function CartItemsDialog() {
     };
   }, []);
 
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     if (isOpen) {
-      getProducts().then(setProducts).catch(console.error);
+      setError(null);
+      getProducts()
+        .then(setProducts)
+        .catch((err) => {
+          console.error("Failed to load products:", err);
+          setError(CONTENT.ERROR_LOADING_PRODUCTS);
+          setProducts([]);
+        });
     }
-  }, [isOpen]); // TODO
+  }, [isOpen]); // TODO:
 
   const cartItemsWithDetails = Object.entries(cartItems)
     .map(([productId, count]) => {
@@ -84,7 +93,13 @@ export default function CartItemsDialog() {
         className="md:max-w-2xl"
       >
         <div className="flex flex-col h-full">
-          {cartItemsWithDetails.length === 0 ? (
+          {error && (
+            <div className="mx-4 mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
+              <AlertCircle size={20} className="text-red-600 shrink-0" />
+              <p className="text-sm text-red-800">{error}</p>
+            </div>
+          )}
+          {cartItemsWithDetails.length === 0 && !error ? (
             <section className="flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-6 text-center">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center mb-4 md:mb-6 shadow-inner">
                 <ShoppingCartIcon
@@ -123,6 +138,7 @@ export default function CartItemsDialog() {
                   aria-label={CONTENT.CART_ACTIONS}
                 >
                   <Button
+                    onClick={() => alert(CONTENT.SCODE_CREEP)}
                     variant="primary"
                     className="md:flex-1 h-12 md:h-14 text-sm md:text-base font-semibold shadow-lg order-2 md:order-1"
                   >

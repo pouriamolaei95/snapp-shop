@@ -67,10 +67,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
 }
 
 export async function generateStaticParams() {
-  const products = await getProducts();
-  return products.map((product) => ({
-    productId: product.id,
-  }));
+  try {
+    const products = await getProducts();
+    return products.map((product) => ({
+      productId: product.id,
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params:", error);
+    // Return empty array to prevent build failure
+    // Pages will be generated on-demand
+    return [];
+  }
 }
 
 export const revalidate = 60 * 30; // 30 minutes

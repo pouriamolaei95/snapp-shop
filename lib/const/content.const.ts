@@ -26,4 +26,13 @@ export const CONTENT = {
   PAGE_NOT_FOUND_DESCRIPTION:
     "متأسفانه صفحه مورد نظر شما یافت نشد. ممکن است آدرس اشتباه باشد یا صفحه حذف شده باشد.",
   GO_HOME: "بازگشت به صفحه اصلی",
+  ERROR_OCCURRED: "خطایی رخ داد",
+  ERROR_DESCRIPTION:
+    "متأسفانه خطایی در سیستم رخ داده است. لطفاً دوباره تلاش کنید.",
+  TRY_AGAIN: "تلاش مجدد",
+  ERROR_LOADING_PRODUCTS: "خطا در بارگذاری محصولات",
+  ERROR_LOADING_PRODUCT: "خطا در بارگذاری محصول",
+  ERROR_LOADING_DATA: "خطا در بارگذاری اطلاعات",
+  ERROR_NETWORK: "خطا در اتصال به سرور",
+  SCODE_CREEP: "این قابلیت خارج از ظرفیت این برنامه است",
 };
