@@ -1,7 +1,19 @@
 import { apiInstance } from "./";
 
 export async function getProducts() {
-  return apiInstance.get("products").json<Product[]>();
+  try {
+    return await apiInstance.get("products").json<Product[]>();
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function getProduct(id: string) {
+  try {
+    return await apiInstance.get(`products/${id}`).json<Product>();
+  } catch (error) {
+    return null;
+  }
 }
 
 export type Product = {

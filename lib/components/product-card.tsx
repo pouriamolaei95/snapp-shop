@@ -6,7 +6,7 @@ import { formatPrice } from "../util/format.util";
 
 export default function ProductCard({ id, name, price, imageUrl }: Product) {
   return (
-    <Link href={`/${id}`} className="group block h-full">
+    <Link href={`products/${id}`} className="group block h-full">
       <Card className="flex flex-col items-center gap-3 h-full cursor-pointer transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 bg-white overflow-hidden">
         <figure className="relative w-full aspect-square p-4 bg-linear-to-br from-gray-50 to-gray-100 group-hover:from-gray-100 group-hover:to-gray-50 transition-colors duration-300">
           <Image

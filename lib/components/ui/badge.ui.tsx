@@ -5,14 +5,5 @@ export function Badge({
   children,
   className,
 }: PropsWithChildren & { className?: string }) {
-  return (
-    <span
-      className={cn(
-        "bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs",
-        className
-      )}
-    >
-      {children}
-    </span>
-  );
+  return <span className={cn("badge", className)}>{children}</span>;
 }

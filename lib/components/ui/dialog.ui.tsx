@@ -28,24 +28,11 @@ export function Dialog({
   showCloseButton = true,
 }: DialogProps) {
   return (
-    <HeadlessDialog
-      open={open}
-      onClose={onClose}
-      className="relative z-50 overflow-hidden"
-    >
-      <div
-        className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
-        aria-hidden="true"
-      />
+    <HeadlessDialog open={open} onClose={onClose} className="relative z-50">
+      <div className="dialog-backdrop" aria-hidden="true" />
 
       <div className="fixed inset-0 flex items-center justify-center p-0 md:p-4">
-        <DialogPanel
-          className={cn(
-            "w-full h-full md:h-auto md:max-h-[90vh] bg-white md:rounded-2xl shadow-2xl transform transition-all overflow-hidden",
-            "flex flex-col md:max-w-lg min-w-[320px]",
-            className
-          )}
-        >
+        <DialogPanel className={cn("dialog-panel", className)}>
           {(title || showCloseButton) && (
             <header className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200 shrink-0">
               {title && (
@@ -53,7 +40,7 @@ export function Dialog({
                   {title}
                 </DialogTitle>
               )}
-              {showCloseButton && ( 
+              {showCloseButton && (
                 <Button
                   variant="icon"
                   onClick={onClose}
