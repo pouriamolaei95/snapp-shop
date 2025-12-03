@@ -2,7 +2,12 @@ import { apiInstance } from "./";
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    return await apiInstance.get("products").json<Product[]>();
+    // Use ky with Next.js revalidation options
+    return await apiInstance
+      .get("products", {
+        next: { revalidate: 60 * 30 }, // 30 minutes
+      })
+      .json<Product[]>();
   } catch (error) {
     console.error("Failed to fetch products:", error);
     return [];
@@ -11,7 +16,12 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function getProduct(id: string): Promise<Product | null> {
   try {
-    return await apiInstance.get(`products/${id}`).json<Product>();
+    // Use ky with Next.js revalidation options
+    return await apiInstance
+      .get(`products/${id}`, {
+        next: { revalidate: 60 * 30 }, // 30 minutes
+      })
+      .json<Product>();
   } catch (error) {
     console.error(`Failed to fetch product ${id}:`, error);
     return null;
