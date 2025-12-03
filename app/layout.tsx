@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={cn(
           vazirmatn.className,
-          "antialiased container mx-auto p-6 min-w-[320px]"
+          "antialiased main-container py-6 min-w-[320px]"
         )}
       >
         <Header />

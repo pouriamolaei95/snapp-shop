@@ -21,10 +21,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const { name, description, price, imageUrl } = product;
 
   return (
-    <article className="flex max-md:flex-col gap-8 md:gap-12 py-4">
+    <article className="flex max-md:flex-col gap-4 md:gap-12 py-2 md:py-4">
       <figure
         className="flex justify-center items-center relative w-full 
-      h-72 md:h-[500px] md:w-[500px] rounded-2xl overflow-hidden border-2 
+      h-64 sm:h-80 md:h-[500px] md:w-[500px] rounded-xl md:rounded-2xl overflow-hidden border-2 
       border-gray-200 bg-linear-to-br from-gray-50 to-gray-100 shadow-lg group"
       >
         <Image
@@ -36,24 +36,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
           sizes="(max-width: 768px) 100vw, 500px"
         />
       </figure>
-      <div className="flex flex-col justify-between gap-8 flex-1">
-        <header className="flex flex-col gap-6">
+      <div className="flex flex-col justify-between gap-4 md:gap-8 flex-1">
+        <header className="flex flex-col gap-4 md:gap-6">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-4">
               {name}
             </h1>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
               {description}
             </p>
           </div>
         </header>
         <section
-          className="flex flex-col gap-6 p-6 rounded-2xl 
+          className="flex flex-col gap-4 md:gap-6 p-4 md:p-6 rounded-xl md:rounded-2xl 
         bg-linear-to-br from-gray-50 to-white border border-gray-200 shadow-sm"
         >
           <div className="flex items-center justify-between">
-            <span className="text-gray-600 text-lg">{CONTENT.PRICE}</span>
-            <p className="text-primary font-bold text-3xl">
+            <span className="text-gray-600 text-base md:text-lg">
+              {CONTENT.PRICE}
+            </span>
+            <p className="text-primary font-bold text-2xl sm:text-3xl">
               {formatPrice(price)}
             </p>
           </div>
