@@ -24,7 +24,7 @@ export function Button({
             variant === "primary",
           "p-2 text-primary hover:bg-primary/10 active:bg-primary/20 rounded-lg hover:scale-105 active:scale-95":
             variant === "icon",
-          "gap-2 h-14 px-6 py-2 border border-gray-200 text-gray-900 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100 active:text-gray-900 rounded-lg":
+          "gap-2 h-14 px-6 py-2 border border-gray-200 text-gray-900 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100 active:text-gray-900":
             variant === "outline",
         },
         className

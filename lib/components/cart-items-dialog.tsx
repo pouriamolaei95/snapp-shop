@@ -126,7 +126,7 @@ export default function CartItemsDialog() {
                   <Button
                     variant="outline"
                     onClick={clearCart}
-                    className="h-12 md:h-14 px-4 md:px-5 text-red-600 hover:bg-red-50 hover:text-red-700 gap-2 border border-red-200 hover:border-red-300 order-1 md:order-2 justify-center"
+                    className="h-12 md:h-14 text-red-600 hover:bg-red-50 hover:text-red-700 border-red-200 hover:border-red-300 order-1 md:order-2"
                     aria-label={CONTENT.CLEAR_CART}
                   >
                     <Trash2Icon size={16} className="md:w-[18px] md:h-[18px]" />
