@@ -22,4 +22,8 @@ export const CONTENT = {
   APP_TITLE: "اسنپ شاپ",
   APP_DESCRIPTION: "فروشگاه اینترنتی اسنپ شاپ",
   CART_ACTIONS: "عملیات سبد خرید",
+  PAGE_NOT_FOUND: "صفحه یافت نشد",
+  PAGE_NOT_FOUND_DESCRIPTION:
+    "متأسفانه صفحه مورد نظر شما یافت نشد. ممکن است آدرس اشتباه باشد یا صفحه حذف شده باشد.",
+  GO_HOME: "بازگشت به صفحه اصلی",
 };
