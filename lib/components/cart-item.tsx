@@ -40,7 +40,7 @@ export default function CartItem({
             <span className="text-[10px] md:text-xs text-gray-500">
               {CONTENT.UNIT_PRICE}
             </span>
-            <p className="font-bold text-primary text-sm md:text-base truncate">
+            <p className="font-bold text-primary text-sm md:text-base">
               {formatPrice(price)}
             </p>
           </div>

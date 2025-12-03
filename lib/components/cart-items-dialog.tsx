@@ -26,7 +26,6 @@ export default function CartItemsDialog() {
       CUSTOM_EVENTS.SHOW_CART_MODAL,
       showModal as EventListener
     );
-
     return () => {
       window.removeEventListener(
         CUSTOM_EVENTS.SHOW_CART_MODAL,
@@ -56,6 +55,11 @@ export default function CartItemsDialog() {
     (sum, item) => sum + item.totalPrice,
     0
   );
+
+  function clearCart() {
+    cartStore.clearCart();
+    setIsOpen(false);
+  }
 
   return (
     <>
@@ -120,11 +124,8 @@ export default function CartItemsDialog() {
                     {CONTENT.CHECKOUT}
                   </Button>
                   <Button
-                    variant="icon"
-                    onClick={() => {
-                      cartStore.clearCart();
-                      setIsOpen(false);
-                    }}
+                    variant="outline"
+                    onClick={clearCart}
                     className="h-12 md:h-14 px-4 md:px-5 text-red-600 hover:bg-red-50 hover:text-red-700 gap-2 border border-red-200 hover:border-red-300 order-1 md:order-2 justify-center"
                     aria-label={CONTENT.CLEAR_CART}
                   >

@@ -42,7 +42,7 @@ export function Dialog({
         <DialogPanel
           className={cn(
             "w-full h-full md:h-auto md:max-h-[90vh] bg-white md:rounded-2xl shadow-2xl transform transition-all overflow-hidden",
-            "flex flex-col md:max-w-lg",
+            "flex flex-col md:max-w-lg min-w-[320px]",
             className
           )}
         >
@@ -53,7 +53,7 @@ export function Dialog({
                   {title}
                 </DialogTitle>
               )}
-              {showCloseButton && (
+              {showCloseButton && ( 
                 <Button
                   variant="icon"
                   onClick={onClose}
