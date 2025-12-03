@@ -1,5 +1,4 @@
 export const CONTENT = {
-  SNAPP_SHOP: "اسنپ شاپ",
   BACK: "بازگشت",
   PRODUCT_DESCRIPTION: "جزئیات محصول",
   CART: "سبد خرید",
@@ -18,4 +17,8 @@ export const CONTENT = {
   VIEW: "مشاهده",
   NO_PRODUCTS_FOUND: "محصولی یافت نشد",
   NO_PRODUCTS_DESCRIPTION: "در حال حاضر محصولی در دسترس نیست",
+  PRICE: "قیمت:",
+  UNIT_PRICE: "قیمت واحد:",
+  APP_TITLE: "اسنپ شاپ",
+  APP_DESCRIPTION: "فروشگاه اینترنتی اسنپ شاپ",
 };

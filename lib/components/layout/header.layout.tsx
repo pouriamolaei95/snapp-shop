@@ -11,7 +11,7 @@ export function Header() {
   const router = useRouter();
   const isHomePage = pathname === "/";
   const pageTitle = isHomePage
-    ? CONTENT.SNAPP_SHOP
+    ? CONTENT.APP_TITLE
     : CONTENT.PRODUCT_DESCRIPTION;
 
   return (

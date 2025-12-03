@@ -44,7 +44,7 @@ export default function CartItem({
         </div>
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-gray-100">
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-gray-500">قیمت واحد:</span>
+            <span className="text-xs text-gray-500">{CONTENT.UNIT_PRICE}</span>
             <p className="font-bold text-primary text-base">
               {formatPrice(price)}
             </p>

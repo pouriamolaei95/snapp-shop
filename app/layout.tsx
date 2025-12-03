@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/util/cn.util";
 import { Header } from "@/lib/components/layout";
+import { CONTENT } from "@/lib/const";
 import { Vazirmatn } from "next/font/google";
 
 const vazirmatn = Vazirmatn({
@@ -11,8 +12,8 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
-  title: "اسنپ شاپ",
-  description: "فروشگاه اینترنتی اسنپ شاپ",
+  title: CONTENT.APP_TITLE,
+  description: CONTENT.APP_DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={cn(vazirmatn.className, "antialiased container mx-auto p-6 min-w-[320px]")}
+        className={cn(
+          vazirmatn.className,
+          "antialiased container mx-auto p-6 min-w-[320px]"
+        )}
       >
         <Header />
         {children}

@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </header>
         <div className="flex flex-col gap-6 p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-gray-600 text-lg">قیمت:</span>
+            <span className="text-gray-600 text-lg">{CONTENT.PRICE}</span>
             <p className="text-primary font-bold text-3xl">
               {formatPrice(price)}
             </p>
