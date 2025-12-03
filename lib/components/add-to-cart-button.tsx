@@ -5,20 +5,21 @@ import { useCartStore } from "../store";
 import CartItemCountModifier from "./cart-item-count-modifier";
 import { Button } from "./ui/";
 import { ShoppingCartIcon } from "lucide-react";
+import type { Product } from "../api/products.api";
 
 type AddToCartButtonProps = {
-  productId: string;
+  product: Product;
 };
 
-export default function AddToCartButton({ productId }: AddToCartButtonProps) {
+export default function AddToCartButton({ product }: AddToCartButtonProps) {
   const cartStore = useCartStore();
-  const count = cartStore.getItemCount(productId);
+  const count = cartStore.getItemCount(product.id);
 
   function handleButtonClick() {
     if (count > 0) {
       window.dispatchEvent(new CustomEvent(CUSTOM_EVENTS.SHOW_CART_MODAL));
     } else {
-      cartStore.addItem(productId);
+      cartStore.addItem(product);
     }
   }
 
@@ -26,7 +27,7 @@ export default function AddToCartButton({ productId }: AddToCartButtonProps) {
     <div className="flex items-center gap-4 w-full">
       {count > 0 && (
         <CartItemCountModifier
-          productId={productId}
+          productId={product.id}
           className="h-14 border border-gray-200 rounded-md p-2"
         />
       )}

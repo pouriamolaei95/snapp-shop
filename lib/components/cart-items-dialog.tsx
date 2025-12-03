@@ -1,67 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Trash2Icon, ShoppingCartIcon, AlertCircle } from "lucide-react";
+import { Trash2Icon, ShoppingCartIcon } from "lucide-react";
 import { CONTENT } from "../const/content.const";
 import { Badge, Button, Dialog } from "./ui";
 import { useCartStore } from "../store";
-import { getProducts, type Product } from "../api/products.api";
 import { formatPrice } from "../util/format.util";
 import CartItem from "./cart-item";
-import { CUSTOM_EVENTS } from "../const";
+import { useEventPoweredModalOpener } from "../hook/event-powered-modal-opener.hook";
 
 export default function CartItemsDialog() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [isOpen, setIsOpen] = useEventPoweredModalOpener("SHOW_CART_MODAL");
   const cartStore = useCartStore();
   const totalCartCount = cartStore.getTotalCartCount();
   const cartItems = cartStore.items;
 
-  useEffect(() => {
-    function showModal() {
-      setIsOpen(true);
-    }
-
-    window.addEventListener(
-      CUSTOM_EVENTS.SHOW_CART_MODAL,
-      showModal as EventListener
-    );
-    return () => {
-      window.removeEventListener(
-        CUSTOM_EVENTS.SHOW_CART_MODAL,
-        showModal as EventListener
-      );
-    };
-  }, []);
-
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (isOpen) {
-      setError(null);
-      getProducts()
-        .then(setProducts)
-        .catch((err) => {
-          console.error("Failed to load products:", err);
-          setError(CONTENT.ERROR_LOADING_PRODUCTS);
-          setProducts([]);
-        });
-    }
-  }, [isOpen]); // TODO:
-
-  const cartItemsWithDetails = Object.entries(cartItems)
-    .map(([productId, count]) => {
-      const product = products.find((p) => p.id === productId);
-      if (!product) return null;
-      return {
-        ...product,
-        totalPrice: product.price * count,
-      };
-    })
-    .filter((item): item is NonNullable<typeof item> => item !== null);
+  const cartItemsWithDetails = Object.values(cartItems);
 
   const totalPrice = cartItemsWithDetails.reduce(
-    (sum, item) => sum + item.totalPrice,
+    (sum, item) => sum + item.product.price * item.count,
     0
   );
 
@@ -93,13 +49,7 @@ export default function CartItemsDialog() {
         className="md:max-w-2xl"
       >
         <div className="flex flex-col h-full">
-          {error && (
-            <div className="mx-4 mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
-              <AlertCircle size={20} className="text-red-600 shrink-0" />
-              <p className="text-sm text-red-800">{error}</p>
-            </div>
-          )}
-          {cartItemsWithDetails.length === 0 && !error ? (
+          {cartItemsWithDetails.length === 0 ? (
             <section className="flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-6 text-center">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center mb-4 md:mb-6 shadow-inner">
                 <ShoppingCartIcon
@@ -118,8 +68,8 @@ export default function CartItemsDialog() {
             <>
               <ul className="flex-1 overflow-y-auto p-3 md:p-6 space-y-3 md:space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 list-none">
                 {cartItemsWithDetails.map((item) => (
-                  <li key={item.id}>
-                    <CartItem {...item} />
+                  <li key={item.product.id}>
+                    <CartItem {...item.product} />
                   </li>
                 ))}
               </ul>

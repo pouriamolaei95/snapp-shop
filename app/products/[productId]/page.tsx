@@ -59,7 +59,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {formatPrice(price)}
             </p>
           </div>
-          <AddToCartButton productId={productId} />
+          <AddToCartButton product={product} />
         </section>
       </div>
     </article>
