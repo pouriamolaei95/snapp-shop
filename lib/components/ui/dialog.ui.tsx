@@ -38,18 +38,18 @@ export function Dialog({
         aria-hidden="true"
       />
 
-      <div className="fixed inset-0 flex items-center justify-center p-4">
+      <div className="fixed inset-0 flex items-center justify-center p-0 md:p-4">
         <DialogPanel
           className={cn(
-            "w-full max-w-lg bg-white rounded-2xl shadow-2xl transform transition-all overflow-hidden",
-            "max-h-[90vh] flex flex-col",
+            "w-full h-full md:h-auto md:max-h-[90vh] bg-white md:rounded-2xl shadow-2xl transform transition-all overflow-hidden",
+            "flex flex-col md:max-w-lg",
             className
           )}
         >
           {(title || showCloseButton) && (
-            <header className="flex items-center justify-between p-6 border-b border-gray-200">
+            <header className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200 shrink-0">
               {title && (
-                <DialogTitle className="text-xl font-bold text-gray-900">
+                <DialogTitle className="text-lg md:text-xl font-bold text-gray-900">
                   {title}
                 </DialogTitle>
               )}
@@ -58,6 +58,7 @@ export function Dialog({
                   variant="icon"
                   onClick={onClose}
                   aria-label={CONTENT.CLOSE}
+                  className="md:ml-auto"
                 >
                   <XIcon size={20} />
                 </Button>
