@@ -6,19 +6,23 @@ import { formatPrice } from "../util/format.util";
 
 export default function ProductCard({ id, name, price, imageUrl }: Product) {
   return (
-    <Link href={`/${id}`}>
-      <Card className="flex flex-col items-center gap-2 h-full cursor-pointer hover:border-primary/30 hover:shadow-md transition-all">
-        <Image
-          priority
-          src={imageUrl}
-          alt={name}
-          className="object-contain"
-          width={152}
-          height={152}
-        />
-        <div className="flex flex-col justify-between gap-2 border-t border-gray-200 p-2 flex-1 text-sm w-full">
-          <h3 className="text-gray-700">{name}</h3>
-          <p className="font-bold text-gray-900 text-end">
+    <Link href={`/${id}`} className="group block h-full">
+      <Card className="flex flex-col items-center gap-3 h-full cursor-pointer transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 bg-white overflow-hidden">
+        <div className="relative w-full aspect-square p-4 bg-linear-to-br from-gray-50 to-gray-100 group-hover:from-gray-100 group-hover:to-gray-50 transition-colors duration-300">
+          <Image
+            priority
+            src={imageUrl}
+            alt={name}
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+        <div className="flex flex-col justify-between gap-2 border-t border-gray-200 p-4 flex-1 text-sm w-full bg-white">
+          <h3 className="text-gray-800 font-medium   group-hover:text-primary transition-colors duration-200">
+            {name}
+          </h3>
+          <p className="font-bold text-primary text-lg text-end mt-auto">
             {formatPrice(price)}
           </p>
         </div>

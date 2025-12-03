@@ -5,6 +5,7 @@ export const CONTENT = {
   CART: "سبد خرید",
   ADD_TO_CART: "افزودن به سبد خرید",
   PRODUCT_NOT_FOUND: "محصول یافت نشد",
+  PRODUCT_NOT_FOUND_DESCRIPTION: "متأسفانه محصول مورد نظر یافت نشد",
   CART_EMPTY: "سبد خرید شما خالی است",
   CART_EMPTY_DESCRIPTION: "محصولات خود را به سبد خرید اضافه کنید",
   SUBTOTAL: "جمع:",
@@ -15,4 +16,6 @@ export const CONTENT = {
   DECREASE_QUANTITY: "کاهش تعداد",
   INCREASE_QUANTITY: "افزایش تعداد",
   VIEW: "مشاهده",
+  NO_PRODUCTS_FOUND: "محصولی یافت نشد",
+  NO_PRODUCTS_DESCRIPTION: "در حال حاضر محصولی در دسترس نیست",
 };

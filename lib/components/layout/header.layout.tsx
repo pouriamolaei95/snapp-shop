@@ -26,7 +26,9 @@ export function Header() {
             <ArrowRight size={20} />
           </Button>
         )}
-        <h1 className="text-xl font-bold">{pageTitle}</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          {pageTitle}
+        </h1>
       </div>
       <CartItemsDialog />
     </header>
