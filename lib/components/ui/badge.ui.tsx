@@ -1,18 +1,18 @@
 import { cn } from "@/lib/util/cn.util";
 import { PropsWithChildren } from "react";
 
-export function Card({
+export function Badge({
   children,
   className,
 }: PropsWithChildren & { className?: string }) {
   return (
-    <div
+    <span
       className={cn(
-        "rounded-lg border border-gray-200 overflow-hidden",
+        "bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs",
         className
       )}
     >
       {children}
-    </div>
+    </span>
   );
 }

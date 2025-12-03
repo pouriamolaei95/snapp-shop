@@ -3,6 +3,7 @@ import ProductCard from "@/lib/components/product-card";
 
 export default async function Home() {
   const products = await getProducts();
+  
   return (
     <main>
       <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">

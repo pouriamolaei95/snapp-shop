@@ -1,0 +1,18 @@
+export const CONTENT = {
+  SNAPP_SHOP: "اسنپ شاپ",
+  BACK: "بازگشت",
+  PRODUCT_DESCRIPTION: "جزئیات محصول",
+  CART: "سبد خرید",
+  ADD_TO_CART: "افزودن به سبد خرید",
+  PRODUCT_NOT_FOUND: "محصول یافت نشد",
+  CART_EMPTY: "سبد خرید شما خالی است",
+  CART_EMPTY_DESCRIPTION: "محصولات خود را به سبد خرید اضافه کنید",
+  SUBTOTAL: "جمع:",
+  TOTAL: "مجموع کل:",
+  CHECKOUT: "پرداخت",
+  CLEAR_CART: "پاک کردن",
+  CLOSE: "بستن",
+  DECREASE_QUANTITY: "کاهش تعداد",
+  INCREASE_QUANTITY: "افزایش تعداد",
+  VIEW: "مشاهده",
+};
