@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Snapp Shop
+
+A modern e-commerce product catalog built with Next.js 16, featuring server-side rendering, static generation, and client-side state management.
 
 ## Getting Started
 
-First, run the development server:
+### Installation
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+This generates an optimized production build with static pages.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+snapp-shop/
+├── app/                    # Next.js App Router
+│   ├── api/                # API routes (mock data endpoints)
+│   ├── products/           # Dynamic product pages
+│   ├── layout.tsx         # Root layout with header
+│   └── page.tsx           # Home page (product listing)
+├── lib/
+│   ├── api/               # API client (ky-based)
+│   ├── components/        # React components
+│   │   ├── layout/        # Layout components
+│   │   └── ui/            # Reusable UI components
+│   ├── const/             # Constants and content
+│   ├── hook/              # Custom React hooks
+│   ├── store/             # Zustand state management
+│   └── util/              # Utility functions
+└── public/                # Static assets
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Data Fetching Strategy
 
-## Deploy on Vercel
+This project uses a **hybrid approach** combining Static Site Generation (SSG) with Incremental Static Regeneration (ISR) and client-side state management:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Server-Side Rendering (SSG + ISR)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Home Page** (`app/page.tsx`):
+- **Method**: Server Component with async data fetching
+- **Strategy**: Static Site Generation (SSG)
+- **Rationale**: Product listings are relatively static and benefit from pre-rendering for SEO and performance
+
+**Product Pages** (`app/products/[productId]/page.tsx`):
+- **Method**: Server Component with `generateStaticParams` + ISR
+- **Strategy**: Static generation with Incremental Static Regeneration
+- **Revalidation**: 30 minutes (`revalidate: 60 * 30`)
+- **Rationale**: 
+  - Pre-generates all product pages at build time for optimal performance
+  - ISR ensures content stays fresh without full rebuilds
+  - Balances performance (SSG) with freshness (ISR)
+
+### Client-Side State Management
+
+**Shopping Cart**:
+- **Method**: Zustand store with full product objects
+- **Strategy**: Client-side state (no API calls)
+- **Rationale**: 
+  - Cart state is ephemeral and user-specific
+  - Storing full product objects eliminates redundant API calls
+  - Provides instant UI updates without server round-trips
+
+### Why Not Pure SSR?
+
+- **Performance**: SSG provides better initial load times and reduces server load
+- **SEO**: Pre-rendered content is fully indexable
+- **Cost**: Static pages can be served from CDN, reducing hosting costs
+- **User Experience**: Instant page loads with ISR keeping content fresh
+
+## Key Features
+
+- **Server Components**: Pages are server-rendered by default for optimal performance
+- **Client Components**: Interactive features (cart, modals) use client-side rendering
+- **State Management**: Zustand for lightweight, performant cart state
+- **Type Safety**: Full TypeScript coverage
+- **Styling**: Tailwind CSS with custom utilities
+- **RTL Support**: Right-to-left layout for Persian/Farsi content
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS 4
+- **HTTP Client**: Ky
+- **UI Components**: Headless UI, Lucide Icons
+
+## Notes
+
+- API routes serve mock data from `lib/const/mock-data.ts`
+- Cart state persists during session but clears on page refresh
+- Product images use Next.js Image component with optimization
+- All text content is externalized in `lib/const/content.const.ts` for easy localization
