@@ -54,15 +54,17 @@ This project uses a **hybrid approach** combining Static Site Generation (SSG) w
 ### Server-Side Rendering (SSG + ISR)
 
 **Home Page** (`app/page.tsx`):
+
 - **Method**: Server Component with async data fetching
 - **Strategy**: Static Site Generation (SSG)
 - **Rationale**: Product listings are relatively static and benefit from pre-rendering for SEO and performance
 
 **Product Pages** (`app/products/[productId]/page.tsx`):
+
 - **Method**: Server Component with `generateStaticParams` + ISR
 - **Strategy**: Static generation with Incremental Static Regeneration
 - **Revalidation**: 30 minutes (`revalidate: 60 * 30`)
-- **Rationale**: 
+- **Rationale**:
   - Pre-generates all product pages at build time for optimal performance
   - ISR ensures content stays fresh without full rebuilds
   - Balances performance (SSG) with freshness (ISR)
@@ -70,9 +72,10 @@ This project uses a **hybrid approach** combining Static Site Generation (SSG) w
 ### Client-Side State Management
 
 **Shopping Cart**:
+
 - **Method**: Zustand store with full product objects
 - **Strategy**: Client-side state (no API calls)
-- **Rationale**: 
+- **Rationale**:
   - Cart state is ephemeral and user-specific
   - Storing full product objects eliminates redundant API calls
   - Provides instant UI updates without server round-trips
