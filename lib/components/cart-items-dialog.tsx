@@ -119,7 +119,7 @@ export default function CartItemsDialog() {
                 <div className="flex flex-col md:flex-row gap-2 md:gap-3">
                   <Button
                     variant="primary"
-                    className="flex-1 h-12 md:h-14 text-sm md:text-base font-semibold shadow-lg order-2 md:order-1"
+                    className="md:flex-1 h-12 md:h-14 text-sm md:text-base font-semibold shadow-lg order-2 md:order-1"
                   >
                     {CONTENT.CHECKOUT}
                   </Button>
