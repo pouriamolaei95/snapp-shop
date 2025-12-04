@@ -1,4 +1,4 @@
-import ky from "ky";
+import ky from "ky-universal";
 
 export const apiInstance = ky.create({
   prefixUrl: "http://localhost:3000/api", // TODO: Move to the env file

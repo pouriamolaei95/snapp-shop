@@ -31,12 +31,16 @@ This generates an optimized production build with static pages.
 ```
 snapp-shop/
 ├── app/                    # Next.js App Router
-│   ├── api/                # API routes (mock data endpoints)
 │   ├── products/           # Dynamic product pages
 │   ├── layout.tsx         # Root layout with header
 │   └── page.tsx           # Home page (product listing)
+├── pages/                  # Next.js Pages Router
+│   └── api/                # API routes (mock data endpoints)
+│       └── products/       # Products API
 ├── lib/
-│   ├── api/               # API client (ky-based)
+│   ├── api/               # API clients and data fetching
+│   │   ├── products.api.ts # Universal API functions (ISR + client)
+│   │   └── config.api.ts  # API configuration
 │   ├── components/        # React components
 │   │   ├── layout/        # Layout components
 │   │   └── ui/            # Reusable UI components
@@ -64,7 +68,7 @@ This project uses a **hybrid approach** combining Incremental Static Regeneratio
   - Ensures product data stays fresh (prices, availability, new products) without full rebuilds
   - Balances performance (static serving) with content freshness (background regeneration)
 
-**Product Pages** (`app/products/[productId]/page.tsx`):
+### API Routes (Pages Router)
 
 - **Method**: Server Component with `generateStaticParams` + ISR
 - **Strategy**: Incremental Static Regeneration (ISR)
