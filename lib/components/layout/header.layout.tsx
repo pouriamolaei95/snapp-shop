@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ShoppingCart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../ui";
 import { CONTENT } from "@/lib/const";
@@ -25,7 +25,7 @@ export function Header() {
           <div className="flex items-center gap-4 flex-1">
             {!isHomePage && (
               <Button
-                onClick={() => router.back()}
+                onClick={() => router.push("/")}
                 variant="icon"
                 aria-label={CONTENT.BACK}
               >
