@@ -66,6 +66,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   );
 }
 
+export const revalidate = 1800; // 30 minutes
+
 export async function generateStaticParams() {
   try {
     const products = await getProducts();

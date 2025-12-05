@@ -34,9 +34,6 @@ snapp-shop/
 │   ├── products/           # Dynamic product pages
 │   ├── layout.tsx         # Root layout with header
 │   └── page.tsx           # Home page (product listing)
-├── pages/                  # Next.js Pages Router
-│   └── api/                # API routes (mock data endpoints)
-│       └── products/       # Products API
 ├── lib/
 │   ├── api/               # API clients and data fetching
 │   │   ├── products.api.ts # Universal API functions (ISR + client)
@@ -61,23 +58,12 @@ This project uses a **hybrid approach** combining Incremental Static Regeneratio
 
 - **Method**: Server Component with async data fetching
 - **Strategy**: Incremental Static Regeneration (ISR)
-- **Revalidation**: 30 minutes (`revalidate: 60 * 30`)
+- **Revalidation**: 30 minutes (`revalidate: 1800`)
 - **Rationale**:
   - Pre-renders product listings at build time for optimal initial load performance
   - ISR regenerates pages in the background after the revalidation period
   - Ensures product data stays fresh (prices, availability, new products) without full rebuilds
   - Balances performance (static serving) with content freshness (background regeneration)
-
-### API Routes (Pages Router)
-
-- **Method**: Server Component with `generateStaticParams` + ISR
-- **Strategy**: Incremental Static Regeneration (ISR)
-- **Revalidation**: 30 minutes (`revalidate: 60 * 30`)
-- **Rationale**:
-  - Pre-generates all product pages at build time via `generateStaticParams` for optimal performance
-  - ISR ensures individual product pages stay fresh without full rebuilds
-  - 30-minute revalidation period is optimal for e-commerce: frequent enough to catch price changes and availability updates, but not so frequent as to cause unnecessary regeneration
-  - Balances performance (SSG benefits) with freshness (ISR benefits)
 
 ### Why ISR Instead of Pure SSG?
 
